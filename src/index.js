@@ -17,7 +17,12 @@ const createWindow = () => {
   });
 
   // and load the index.html of the app.
-  mainWindow.loadURL(`file://${__dirname}/index.html`);
+ // mainWindow.loadURL(`file://${__dirname}/index.html`);
+ mainWindow.loadURL(`https://www.youtube.com`);
+
+  
+  //go back
+  mainWindow.webContents.goBack();
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
@@ -51,7 +56,25 @@ app.on('activate', () => {
   if (mainWindow === null) {
     createWindow();
   }
+  if(mainWindow.webContents.canGoBack()) {
+    mainWindow.webContents.goBack();
+  }
 });
+// const template = [
+//   // Other menu items...
+//   {
+   
+//         label: 'Home',
+//         click: () => { mainWindow.webContents.loadURL(`file://${__dirname}/index.html`) },
+//         accelerator: 'CmdOrCtrl+[' // Keyboard shortcut
+//       }
+  
+//   ]
+//   const { Menu } = require('electron')
+// const menu = Menu.buildFromTemplate(template)
+// Menu.setApplicationMenu(menu)
+  // Other menu items...
+
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
